@@ -8,6 +8,5 @@ target 'GitHubSearch' do
   # Pods for GitHubSearch
 
 	pod 'Kingfisher', '~> 5.0'
-	pod 'Alamofire'
 
 end

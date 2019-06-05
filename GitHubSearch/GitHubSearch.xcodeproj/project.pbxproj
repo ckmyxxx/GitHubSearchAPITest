@@ -16,14 +16,12 @@
 		C35871B622A4F8D8004D5718 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871B522A4F8D8004D5718 /* HTTPManager.swift */; };
 		C35871BC22A4FF9D004D5718 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871BA22A4FF9D004D5718 /* ResultCollectionViewCell.swift */; };
 		C35871BD22A4FF9D004D5718 /* ResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35871BB22A4FF9D004D5718 /* ResultCollectionViewCell.xib */; };
-		C35871BF22A501F5004D5718 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871BE22A501F5004D5718 /* UserViewModel.swift */; };
 		C35871C222A51890004D5718 /* UICollectionView+EX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871C122A51890004D5718 /* UICollectionView+EX.swift */; };
 		C35871C422A60885004D5718 /* GHConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871C322A60885004D5718 /* GHConstant.swift */; };
 		C35871C622A6098C004D5718 /* Bundle+EX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871C522A6098C004D5718 /* Bundle+EX.swift */; };
 		C35871C922A6A9A1004D5718 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871C822A6A9A1004D5718 /* KingFisherWrapper.swift */; };
 		C35871CB22A6AA74004D5718 /* UIImage+EX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871CA22A6AA74004D5718 /* UIImage+EX.swift */; };
 		C35871CE22A6AFCE004D5718 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871CD22A6AFCE004D5718 /* SearchVC.swift */; };
-		C35871D022A73C97004D5718 /* AlamofireWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871CF22A73C97004D5718 /* AlamofireWrapper.swift */; };
 		C35871D222A766EE004D5718 /* UIScreen+EX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871D122A766EE004D5718 /* UIScreen+EX.swift */; };
 		C35871D422A7968B004D5718 /* String+EX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871D322A7968B004D5718 /* String+EX.swift */; };
 		C35871D622A7BCBA004D5718 /* UIView+EX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35871D522A7BCBA004D5718 /* UIView+EX.swift */; };
@@ -43,14 +41,12 @@
 		C35871B522A4F8D8004D5718 /* HTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		C35871BA22A4FF9D004D5718 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		C35871BB22A4FF9D004D5718 /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
-		C35871BE22A501F5004D5718 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		C35871C122A51890004D5718 /* UICollectionView+EX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+EX.swift"; sourceTree = "<group>"; };
 		C35871C322A60885004D5718 /* GHConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHConstant.swift; sourceTree = "<group>"; };
 		C35871C522A6098C004D5718 /* Bundle+EX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+EX.swift"; sourceTree = "<group>"; };
 		C35871C822A6A9A1004D5718 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
 		C35871CA22A6AA74004D5718 /* UIImage+EX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+EX.swift"; sourceTree = "<group>"; };
 		C35871CD22A6AFCE004D5718 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
-		C35871CF22A73C97004D5718 /* AlamofireWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireWrapper.swift; sourceTree = "<group>"; };
 		C35871D122A766EE004D5718 /* UIScreen+EX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+EX.swift"; sourceTree = "<group>"; };
 		C35871D322A7968B004D5718 /* String+EX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EX.swift"; sourceTree = "<group>"; };
 		C35871D522A7BCBA004D5718 /* UIView+EX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EX.swift"; sourceTree = "<group>"; };
@@ -115,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				C35871B322A4D8FD004D5718 /* UserModel.swift */,
-				C35871BE22A501F5004D5718 /* UserViewModel.swift */,
 				C35871B522A4F8D8004D5718 /* HTTPManager.swift */,
 				C35871C322A60885004D5718 /* GHConstant.swift */,
 			);
@@ -168,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				C35871C822A6A9A1004D5718 /* KingFisherWrapper.swift */,
-				C35871CF22A73C97004D5718 /* AlamofireWrapper.swift */,
 			);
 			path = ThirdPartyWrapper;
 			sourceTree = "<group>";
@@ -282,14 +276,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GitHubSearch/Pods-GitHubSearch-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,7 +298,6 @@
 			files = (
 				C35871CE22A6AFCE004D5718 /* SearchVC.swift in Sources */,
 				C35871C622A6098C004D5718 /* Bundle+EX.swift in Sources */,
-				C35871D022A73C97004D5718 /* AlamofireWrapper.swift in Sources */,
 				C35871D622A7BCBA004D5718 /* UIView+EX.swift in Sources */,
 				C35871C222A51890004D5718 /* UICollectionView+EX.swift in Sources */,
 				C35871BC22A4FF9D004D5718 /* ResultCollectionViewCell.swift in Sources */,
@@ -317,7 +308,6 @@
 				C35871C922A6A9A1004D5718 /* KingFisherWrapper.swift in Sources */,
 				C358719E22A4D3F0004D5718 /* AppDelegate.swift in Sources */,
 				C35871D822A7BE50004D5718 /* UIActivityIndicatorView+EX.swift in Sources */,
-				C35871BF22A501F5004D5718 /* UserViewModel.swift in Sources */,
 				C35871B622A4F8D8004D5718 /* HTTPManager.swift in Sources */,
 				C35871D222A766EE004D5718 /* UIScreen+EX.swift in Sources */,
 			);
