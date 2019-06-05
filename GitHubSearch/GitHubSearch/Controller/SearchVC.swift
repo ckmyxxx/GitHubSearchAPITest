@@ -10,6 +10,8 @@ import UIKit
 
 class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
+    @IBOutlet weak var errorLabel: UILabel!
+    
     @IBOutlet weak var activeIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -68,7 +70,17 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
                 self?.nextPage = userModel.next
                 self?.items.append(contentsOf: userModel.items)
                 self?.stopLoading()
-            case .failure:
+                
+                DispatchQueue.main.async {
+                    self?.errorLabel.text = nil
+                }
+                
+            case .failure(let err):
+                
+                DispatchQueue.main.async {
+                    self?.errorLabel.text = err.localizedDescription
+                }
+                
                 self?.items = []
                 self?.stopLoading()
             }
