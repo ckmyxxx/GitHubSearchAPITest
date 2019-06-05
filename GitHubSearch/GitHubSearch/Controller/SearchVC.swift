@@ -80,8 +80,6 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
                 DispatchQueue.main.async {
                     self?.errorLabel.text = err.localizedDescription
                 }
-                
-                self?.items = []
                 self?.stopLoading()
             }
         }
@@ -189,6 +187,11 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         checkIsHaveContent()
         
         request(str, String(page))
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
     }
 
     

@@ -38,10 +38,14 @@
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVb-9Z-T1r">
                                 <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <subviews>
-                                    <searchBar alpha="0.90000000000000002" contentMode="redraw" searchBarStyle="minimal" placeholder="Username" translatesAutoresizingMaskIntoConstraints="NO" id="LJD-i8-5QG">
+                                    <searchBar alpha="0.90000000000000002" contentMode="redraw" searchBarStyle="minimal" placeholder="Username" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJD-i8-5QG">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
                                     </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -92,7 +96,6 @@
                             <constraint firstItem="rC3-eH-W2d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MGm-eb-x34"/>
                             <constraint firstItem="qVb-9Z-T1r" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VEM-v4-eTU"/>
                             <constraint firstItem="rB3-yo-Uu8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bTi-aH-hha"/>
-                            <constraint firstItem="rC3-eH-W2d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cnx-5w-9is"/>
                             <constraint firstItem="fPu-11-bMR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dn5-Mt-ana"/>
                             <constraint firstItem="96f-zy-8I2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="j3S-tQ-CrK"/>
                             <constraint firstItem="fPu-11-bMR" firstAttribute="top" secondItem="qVb-9Z-T1r" secondAttribute="bottom" id="jpB-An-FiY"/>
