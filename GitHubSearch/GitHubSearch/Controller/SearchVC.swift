@@ -93,7 +93,7 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    // MARK: CollectionViewDelegate
+    // MARK: CollectionViewDataSource, Dalegate
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
@@ -105,6 +105,7 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: ResultCollectionViewCell.self),
             for: indexPath) as? ResultCollectionViewCell else {fatalError()}
@@ -155,8 +156,6 @@ extension SearchVC {
         collectionView.yh_registerCellFromNib(String(describing: ResultCollectionViewCell.self))
         
         collectionViewFlow.itemSize = CGSize(width: CGFloat(UIScreen.width / 2 - 20), height: CGFloat(UIScreen.width / 2 - 20) * 4 / 3)
-        
-        collectionViewFlow.scrollDirection = .vertical
         
     }
     
