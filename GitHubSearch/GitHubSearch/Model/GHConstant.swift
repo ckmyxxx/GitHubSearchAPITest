@@ -18,21 +18,31 @@ protocol GHRequest {
     
     var headers: [String: String] { get }
     
+    var para: [URLQueryItem] { get }
+    
     var body: [String: Any]? { get }
     
     var method: String { get }
     
     var endPoint: String { get }
+    
 }
 
 enum GHSearchRequest: GHRequest {
     
-    case searchUser(String,String)
+    case searchUser(String, String)
     
     var headers: [String : String] {
         switch self {
+        case .searchUser:
+            return [:]
+        }
+    }
+    
+    var para: [URLQueryItem] {
+        switch self {
         case .searchUser(let user, let page):
-            return ["q": user, "page": page]
+            return [URLQueryItem(name: "q", value: user), URLQueryItem(name: "page", value: page)]
         }
     }
     

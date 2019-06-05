@@ -8,6 +8,15 @@
 
 import Foundation
 
+enum GHHTTPManagerError: Error {
+    
+    case clientError(Data)
+    
+    case serverError
+    
+    case unexpectedError
+}
+
 class HTTPManager {
     
     static let shared = HTTPManager()
@@ -18,9 +27,11 @@ class HTTPManager {
         
         let urlString = Bundle.GHValueForString(key: GHConstant.urlKey) + ghRequest.endPoint
         
-        let url = URL(string: urlString)!
+        let urlComponents = NSURLComponents(string: urlString)!
+
+        urlComponents.queryItems = ghRequest.para
         
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: urlComponents.url!)
         
         request.allHTTPHeaderFields = ghRequest.headers
         
@@ -28,26 +39,52 @@ class HTTPManager {
         
         return request
     }
-
+    
     func request(
         _ ghRequest: GHRequest, completion: @escaping (Result<UserModel, Error>) -> Void) {
         
         URLSession.shared.dataTask(with: makeRequest(ghRequest)) { (data, resp, err) in
             
-            guard err != nil else {
+            guard err == nil else {
                 completion(.failure(err!))
                 return
             }
             
-            do {
-                let userModel = try JSONDecoder().decode(UserModel.self, from: data!)
+            let httpResponse = resp as! HTTPURLResponse
+            
+            let statusCode = httpResponse.statusCode
+            
+            switch statusCode {
                 
-                completion(.success(userModel))
+            case 200..<300:
                 
-            } catch let jsonError {
+                do {
+                    var userModel = try JSONDecoder().decode(UserModel.self, from: data!)
+                    
+                    if let next = httpResponse.allHeaderFields["Link"] as? String, next.checkNextPage() {
+                        userModel.next = true
+                    } else {
+                        userModel.next = false
+                    }
+                    completion(.success(userModel))
+                    
+                } catch let jsonError {
+                    
+                    completion(.failure(jsonError))
+                    
+                }
                 
-                completion(.failure(jsonError))
+            case 400..<500:
                 
+                completion(Result.failure(GHHTTPManagerError.clientError(data!)))
+                
+            case 500..<600:
+                
+                completion(Result.failure(GHHTTPManagerError.serverError))
+                
+            default: return
+                
+                completion(Result.failure(GHHTTPManagerError.unexpectedError))
             }
             
         }.resume()

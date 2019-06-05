@@ -12,12 +12,14 @@ import Foundation
 struct UserModel: Codable {
     let totalCount: Int
     let results: Bool
-    let items: Items
+    let items: [Items]
+    var next: Bool?
     
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"
         case results = "incomplete_results"
         case items
+        case next
     }
 }
 

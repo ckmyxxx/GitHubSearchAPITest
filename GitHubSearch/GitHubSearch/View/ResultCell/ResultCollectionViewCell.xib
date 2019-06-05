@@ -24,12 +24,13 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Uf-Cq-Qjq">
                                 <rect key="frame" x="0.0" y="0.0" width="194" height="194"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2Uf-Cq-Qjq" secondAttribute="height" id="iaZ-lI-IHu"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRK-9H-NMn">
-                                <rect key="frame" x="76" y="194" width="42" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRK-9H-NMn">
+                                <rect key="frame" x="16" y="194" width="162" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -39,9 +40,11 @@
                         <constraints>
                             <constraint firstItem="HRK-9H-NMn" firstAttribute="top" secondItem="2Uf-Cq-Qjq" secondAttribute="bottom" id="70e-eK-SQj"/>
                             <constraint firstItem="HRK-9H-NMn" firstAttribute="centerX" secondItem="63i-4D-WwI" secondAttribute="centerX" id="Bst-Ln-MRN"/>
+                            <constraint firstAttribute="trailing" secondItem="HRK-9H-NMn" secondAttribute="trailing" constant="16" id="J73-GF-2s2"/>
                             <constraint firstItem="2Uf-Cq-Qjq" firstAttribute="top" secondItem="63i-4D-WwI" secondAttribute="top" id="LfL-mm-Q8M"/>
                             <constraint firstAttribute="trailing" secondItem="2Uf-Cq-Qjq" secondAttribute="trailing" id="kIw-iJ-5u5"/>
-                            <constraint firstAttribute="bottom" secondItem="HRK-9H-NMn" secondAttribute="bottom" id="wJW-XC-sCI"/>
+                            <constraint firstItem="HRK-9H-NMn" firstAttribute="leading" secondItem="63i-4D-WwI" secondAttribute="leading" constant="16" id="qpx-bs-X4H"/>
+                            <constraint firstAttribute="bottom" secondItem="HRK-9H-NMn" secondAttribute="bottom" constant="10" id="wJW-XC-sCI"/>
                             <constraint firstItem="2Uf-Cq-Qjq" firstAttribute="leading" secondItem="63i-4D-WwI" secondAttribute="leading" id="zx9-ip-bG1"/>
                         </constraints>
                     </view>

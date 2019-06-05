@@ -8,68 +8,102 @@
 
 import UIKit
 
-class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+    
+    @IBOutlet weak var activeIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var blankHintLabel: UILabel!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var collectionViewFlow: UICollectionViewFlowLayout!
     
+    var nextPage: Bool? = false
+    
     var items: [Items] = [] {
         didSet {
-            collectionView?.reloadData()
+            checkIsHaveContent()
         }
     }
     
-    var page = "1"
+    var page = 1
     
     var isFetching = false
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // paging
+        
+        let delta = collectionView.contentSize.height - collectionView.contentOffset.y
+        
+        if  delta < 1500,
+            let str = searchBar.text,
+            isFetching == false,
+            nextPage == true {
+            
+            page += 1
+            
+            request(str, String(page))
+            
+        }
+    }
+    
+    func checkIsHaveContent() {
+        if items.count == 0 {
+            collectionViewIsHidden(true)
+        } else {
+            collectionViewIsHidden(false)
+        }
     }
     
     func request(_ user: String,_ page: String) {
         
-        isFetching = true
+        startLoading()
         
         HTTPManager.shared.request(
         GHSearchRequest.searchUser(user, page))
         { [weak self] (result) in
             switch result {
             case .success(let userModel):
-                self?.items = [userModel.items]
-                self?.isFetching = false
+                self?.nextPage = userModel.next
+                self?.items.append(contentsOf: userModel.items)
+                self?.stopLoading()
             case .failure:
                 self?.items = []
-                self?.isFetching = false
+                self?.stopLoading()
             }
         }
     }
     
+    func startLoading() {
+        blankHintLabel.hidden(true)
+        activeIndicator.startLoad()
+        isFetching = true
+    }
+    
+    func stopLoading() {
+        blankHintLabel.hidden(false)
+        activeIndicator.stopLoad()
+        isFetching = false
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResultCollectionViewCell.self), for: indexPath) as? ResultCollectionViewCell else {
-            fatalError()
-        }
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: ResultCollectionViewCell.self),
+            for: indexPath) as? ResultCollectionViewCell else {fatalError()}
         
         cell.commonInit(image: items[indexPath.row].avatarUrl, account: items[indexPath.row].login)
         
-        
         return cell
-    }
-    
-    @IBAction func SearchBtnPressed(_ sender: UIButton) {
-        
-        if let str = textField.text, isFetching == false {
-            
-            request(str, page)
-            
-        }
     }
     
     override func viewDidLoad() {
@@ -77,13 +111,71 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         
         collectionViewSetup()
         
+        checkIsHaveContent()
+        
+        searchBar.delegate = self
+        
     }
     
     func collectionViewSetup() {
+        
         collectionView.dataSource = self
+        
         collectionView.delegate = self
+        
         collectionView.yh_registerCellFromNib(String(describing: ResultCollectionViewCell.self))
+        
+        collectionViewFlow.itemSize = CGSize(width: CGFloat(UIScreen.width / 2 - 20), height: CGFloat(UIScreen.width / 2 - 20) * 4 / 3)
+        
+        collectionViewFlow.scrollDirection = .vertical
+        
     }
     
-}
+    func reloadData() {
+        
+        guard Thread.isMainThread == true else {
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.reloadData()
+            }
+            
+            return
+        }
+        
+        collectionView.reloadData()
+    }
+    
+    func collectionViewIsHidden(_ bool: Bool) {
+        
+        guard Thread.isMainThread == true else {
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.collectionViewIsHidden(bool)
+            }
+            
+            return
+        }
 
+        collectionView.isHidden = bool
+        reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        
+        guard let str = searchBar.text, isFetching == false else { return }
+        
+        page = 1
+        
+        items = []
+        
+        checkIsHaveContent()
+        
+        request(str, String(page))
+    }
+
+    
+}
