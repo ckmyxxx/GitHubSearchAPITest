@@ -184,6 +184,8 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         
         items = []
         
+        errorLabel.text = nil
+        
         checkIsHaveContent()
         
         request(str, String(page))
