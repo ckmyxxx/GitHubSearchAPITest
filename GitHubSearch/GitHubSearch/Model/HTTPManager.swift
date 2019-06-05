@@ -50,7 +50,9 @@ class HTTPManager {
                 return
             }
             
-            let httpResponse = resp as! HTTPURLResponse
+            guard let httpResponse = resp as? HTTPURLResponse else { return }
+            
+            guard let data = data else { return }
             
             let statusCode = httpResponse.statusCode
             
@@ -59,7 +61,7 @@ class HTTPManager {
             case 200..<300:
                 
                 do {
-                    var userModel = try JSONDecoder().decode(UserModel.self, from: data!)
+                    var userModel = try JSONDecoder().decode(UserModel.self, from: data)
                     
                     if let next = httpResponse.allHeaderFields["Link"] as? String, next.checkNextPage() {
                         userModel.next = true
@@ -76,7 +78,7 @@ class HTTPManager {
                 
             case 400..<500:
                 
-                completion(Result.failure(GHHTTPManagerError.clientError(data!)))
+                completion(Result.failure(GHHTTPManagerError.clientError(data)))
                 
             case 500..<600:
                 

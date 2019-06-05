@@ -102,7 +102,6 @@
 			children = (
 				C35871C722A6A97E004D5718 /* ThirdPartyWrapper */,
 				C35871C022A51873004D5718 /* Extension */,
-				C358719D22A4D3F0004D5718 /* AppDelegate.swift */,
 				C35871AF22A4D610004D5718 /* Model */,
 				C35871B222A4D62A004D5718 /* Controller */,
 				C35871B122A4D624004D5718 /* View */,
@@ -136,6 +135,7 @@
 		C35871B222A4D62A004D5718 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C358719D22A4D3F0004D5718 /* AppDelegate.swift */,
 				C35871CD22A6AFCE004D5718 /* SearchVC.swift */,
 			);
 			path = Controller;
