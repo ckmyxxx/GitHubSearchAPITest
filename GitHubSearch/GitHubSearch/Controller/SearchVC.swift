@@ -25,8 +25,11 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     var nextPage: Bool? = false
     
     var items: [Items] = [] {
+        
         didSet {
+            
             checkIsHaveContent()
+            
         }
     }
     
@@ -34,27 +37,30 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     
     var isFetching = false
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        collectionViewSetup()
+        
+        checkIsHaveContent()
+        
+        searchBar.delegate = self
+        
+    }
+    
+    // MARK: ScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let delta = collectionView.contentSize.height - collectionView.contentOffset.y
         
-        if  delta < 1500,
-            let str = searchBar.text,
-            isFetching == false,
-            nextPage == true {
+        if  delta < 1500, let str = searchBar.text,
+            isFetching == false, nextPage == true {
             
             page += 1
             
             request(str, String(page))
             
-        }
-    }
-    
-    func checkIsHaveContent() {
-        if items.count == 0 {
-            collectionViewIsHidden(true)
-        } else {
-            collectionViewIsHidden(false)
         }
     }
     
@@ -65,8 +71,10 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         HTTPManager.shared.request(
         GHSearchRequest.searchUser(user, page))
         { [weak self] (result) in
+            
             switch result {
             case .success(let userModel):
+                
                 self?.nextPage = userModel.next
                 self?.items.append(contentsOf: userModel.items)
                 self?.stopLoading()
@@ -85,19 +93,9 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    func startLoading() {
-        blankHintLabel.hidden(true)
-        activeIndicator.startLoad()
-        isFetching = true
-    }
-    
-    func stopLoading() {
-        blankHintLabel.hidden(false)
-        activeIndicator.stopLoad()
-        isFetching = false
-    }
-    
+    // MARK: CollectionViewDelegate
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
         return 1
     }
     
@@ -111,22 +109,43 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
             withReuseIdentifier: String(describing: ResultCollectionViewCell.self),
             for: indexPath) as? ResultCollectionViewCell else {fatalError()}
         
-        cell.commonInit(image: items[indexPath.row].avatarUrl, account: items[indexPath.row].login)
+        cell.commonInit(
+            image: items[indexPath.row].avatarUrl,
+            account: items[indexPath.row].login)
         
         return cell
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: SearchBar Delegate
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        collectionViewSetup()
+        searchBar.resignFirstResponder()
+        
+        guard let str = searchBar.text, isFetching == false else { return }
+        
+        page = 1
+        
+        items = []
+        
+        errorLabel.text = nil
         
         checkIsHaveContent()
         
-        searchBar.delegate = self
-        
+        request(str, String(page))
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        
+        searchBar.text = nil
+    }
+
+}
+
+extension SearchVC {
+    
+    // MARK: Setup
     func collectionViewSetup() {
         
         collectionView.dataSource = self
@@ -139,6 +158,26 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         
         collectionViewFlow.scrollDirection = .vertical
         
+    }
+    
+    func checkIsHaveContent() {
+        if items.count == 0 {
+            collectionViewIsHidden(true)
+        } else {
+            collectionViewIsHidden(false)
+        }
+    }
+    
+    func startLoading() {
+        blankHintLabel.hidden(true)
+        activeIndicator.startLoad()
+        isFetching = true
+    }
+    
+    func stopLoading() {
+        blankHintLabel.hidden(false)
+        activeIndicator.stopLoad()
+        isFetching = false
     }
     
     func reloadData() {
@@ -167,32 +206,9 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
             
             return
         }
-
+        
         collectionView.isHidden = bool
         reloadData()
     }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        searchBar.resignFirstResponder()
-        
-        guard let str = searchBar.text, isFetching == false else { return }
-        
-        page = 1
-        
-        items = []
-        
-        errorLabel.text = nil
-        
-        checkIsHaveContent()
-        
-        request(str, String(page))
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchBar.text = nil
-    }
-
     
 }
