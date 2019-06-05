@@ -53,13 +53,13 @@
                                     <constraint firstAttribute="bottom" secondItem="LJD-i8-5QG" secondAttribute="bottom" id="wgC-jd-nfD"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No search result." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4x-Yx-ODC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No search result." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4x-Yx-ODC">
                                 <rect key="frame" x="143" y="438" width="128.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rC3-eH-W2d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rC3-eH-W2d">
                                 <rect key="frame" x="20" y="468" width="374" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -82,14 +82,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="rC3-eH-W2d" secondAttribute="trailing" constant="20" id="1Fv-2T-JXo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rC3-eH-W2d" secondAttribute="trailing" constant="20" id="1Fv-2T-JXo"/>
                             <constraint firstItem="o4x-Yx-ODC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1Ku-GI-RPL"/>
                             <constraint firstItem="rC3-eH-W2d" firstAttribute="top" secondItem="o4x-Yx-ODC" secondAttribute="bottom" constant="10" id="7ni-ro-CER"/>
                             <constraint firstItem="rB3-yo-Uu8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="B2F-AV-jDd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fPu-11-bMR" secondAttribute="trailing" id="EJm-LQ-fjJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fPu-11-bMR" secondAttribute="bottom" id="EcE-Jg-k0N"/>
                             <constraint firstItem="96f-zy-8I2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IOw-H7-Qjq"/>
-                            <constraint firstItem="rC3-eH-W2d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="MGm-eb-x34"/>
+                            <constraint firstItem="rC3-eH-W2d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MGm-eb-x34"/>
                             <constraint firstItem="qVb-9Z-T1r" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VEM-v4-eTU"/>
                             <constraint firstItem="rB3-yo-Uu8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bTi-aH-hha"/>
                             <constraint firstItem="rC3-eH-W2d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cnx-5w-9is"/>
